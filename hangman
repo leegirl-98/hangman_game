@@ -1,0 +1,86 @@
+import random
+def hangman():
+
+    word = random.choice(["ritu" , "piyush" , "hindustan" , "hindu" , "india" , "lion" , "python" , "shiva" , "krishna" , "prerna"])
+    validlatters = "abcdefghijklmnopqrstuvwxyz"
+    turns = 10
+    guessmade = ''
+
+    while len(word) > 0:
+        main = ""
+        missed = 0
+
+        for letter in word:
+            if letter in guessmade:
+                main = main + letter
+            else:
+                main = main + "_" + " "
+        if main == word:
+            print(main)
+            print("you win!")
+            break
+
+        print("guess the word:" , main)
+        guess = input()
+
+        if guess in validlatters:
+            guessmade = guessmade + guess
+        else:
+            print("guess the correct charector")
+            guess = input()
+
+        if guess not in word:
+            turns = turns - 1
+            if turns == 9:
+                print("you have 9 turns")
+                print("-----------------")
+            if turns == 8:
+                print("u have 8 turns")
+                print("O")
+            if turns == 7:
+                print("u have 7 turns")
+                print("O")
+                print("|")
+            if turns == 6:
+                print("u have 6 turns")
+                print("O")
+                print("|")
+                print("/")
+            if turns == 5:
+                print("u have 5 turns")
+                print("    O        ")
+                print("    |         ")
+                print("   /  \      ")
+            if turns == 4:
+                print("u have 4 turns")
+                print("    \ O        ")
+                print("      |         ")
+                print("     / \      ")
+            if turns == 3:
+                print("u have 3 turns")
+                print("   \ O /       ")
+                print("     |         ")
+                print("    / \      ")
+            if turns == 2:
+                print("u have 2 turns")
+                print("   \ O /|       ")
+                print("     |         ")
+                print("    / \      ")
+            if turns == 1:
+                print("u have 1 turns")
+                print("   \ O /|       ")
+                print("    |   |     ")
+                print("   /  \      ")
+            if turns == 0:
+                print("u have no turns left")
+                print("       O        ")
+                print("    ---|---         ")
+                print("     /  \      ")
+                break
+
+
+name = input("enter your name ")
+print("welcome", name)
+print("----------------")
+hangman()
+print()
